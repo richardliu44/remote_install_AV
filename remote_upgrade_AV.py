@@ -18,7 +18,7 @@ import paramiko
 AV_PASSWORD = "av_password"
 
 def script_usage():
-    print("Usage: upgrade_av_remote.py -s Avamar_Server_IP -u Avamar_Upgrade_Version,eg.19.4.0.1")
+    print("Usage: upgrade_av_remote.py -s ****_Server_IP -u ****_Upgrade_Version,eg.19.4.0.1")
 
 def opt_arg():
     try:
@@ -31,12 +31,12 @@ def opt_arg():
             script_usage()
         elif opt in ("-s", "--server_ip"):
             av_server_ip = arg
-            #print("Avamar Server IP is " + av_server_ip)
+            #print("**** Server IP is " + av_server_ip)
         elif opt in ("-u", "--av_upgrade_version"):
             av_server_upgrade_full_name = arg
             av_server_upgrade_version_list = arg.split('.')[:-1]
             av_server_upgrade_version = ''.join(av_server_upgrade_version_list)
-            #print("Avamar Server Version is " + av_server_version)
+            #print("**** Server Version is " + av_server_version)
             return av_server_upgrade_version, av_server_ip, av_server_upgrade_full_name
 
 if __name__ == '__opt_arg__':
