@@ -103,7 +103,7 @@ def validate_a_checkpoint():
         print("There is a validated checkpoint already.")
 
 def cp_upgrade_pack_to_av():
-    print("Start to copy upgrade package to Avamar server...")
+    print("Start to copy upgrade package to **** server...")
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh.connect(hostname=opt_arg()[1], port=22, username='root', password=AV_PASSWORD)
