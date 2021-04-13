@@ -18,7 +18,7 @@ DEFAULT_PASSWORD = "DEFAULT_PASSWORD"
 AV_PASSWORD = "AV_PASSWORD"
 
 def script_usage():
-    print("Usage: install_av_remote.py -s Avamar_Server_IP -v Avamar_Server_Version,eg.19.4.0.9")
+    print("Usage: install_av_remote.py -s ****_Server_IP -v ****_Server_Version,eg.19.4.0.9")
 
 def opt_arg():
     try:
@@ -31,11 +31,11 @@ def opt_arg():
             script_usage()
         elif opt in ("-s", "--server_ip"):
             av_server_ip = arg
-            #print("Avamar Server IP is " + av_server_ip)
+            #print("**** Server IP is " + av_server_ip)
         elif opt in ("-v", "--av_version"):
             av_server_version_list = arg.split('.')[:-1]
             av_server_version = ''.join(av_server_version_list)
-            #print("Avamar Server Version is " + av_server_version)
+            #print("**** Server Version is " + av_server_version)
             return av_server_version, av_server_ip
 
 if __name__ == '__opt_arg__':
@@ -75,10 +75,10 @@ def clear_host():
 def ping_av():
     av_status = os.system('ping -c 1 ' + opt_arg()[1])
     while av_status != 0:
-        print("Waiting 5s for Avamar Server booting up...")
+        print("Waiting 5s for **** Server booting up...")
         time.sleep(5)
         av_status = os.system('ping -c 1 ' + opt_arg()[1])
-    print("Avamar Server is online.")
+    print("**** Server is online.")
     print("Sleep 30s until avi-cli available...")
     time.sleep(30) #Wait until avi-cli available.
 
@@ -87,7 +87,7 @@ def install_av():
     os.system('cp /root/install_av.yaml /root/install_av_' + opt_arg()[1] + '.yaml')
     os.system('echo "hfsaddr: ' + opt_arg()[1] +'"  >> /root/install_av_' + opt_arg()[1] +'.yaml')
     cmd = "avi-cli " + opt_arg()[1] + " -v --password " + DEFAULT_PASSWORD + " --supportkey " + support_key() + " --install ave-config --userinput /root/install_av_" + opt_arg()[1] + ".yaml --port 7543"
-    print("Start to install Avamar Server...")
+    print("Start to install **** Server...")
     print(cmd)
     install_status = subprocess.getoutput(cmd)
     print(install_status)
@@ -114,9 +114,9 @@ def enable_ssh():
 
 clear_host()
 
-print("Avamar Server IP is " + opt_arg()[1])
+print("**** Server IP is " + opt_arg()[1])
 
-print("Avamar Server Version is " + opt_arg()[0])
+print("**** Server Version is " + opt_arg()[0])
 
 ping_av()
 
