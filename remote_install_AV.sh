@@ -25,15 +25,15 @@ while getopts "s:v:h" opt
 do
     case $opt in
         s)
-            echo "Avamar Server IP is $OPTARG"
+            echo "**** Server IP is $OPTARG"
             av_server_ip=$OPTARG
             ;;
         v)
-            echo "Avamar Server Version is $OPTARG"
+            echo "**** Server Version is $OPTARG"
             av_server_version=`echo $OPTARG | awk -F "." '{print $1""$2""$3}'`
 			;;
 		h)
-            echo "Usage: install_av_remote.sh -s Avamar_Server_IP -v Avamar_Server_Version,eg.19.4.0.7"
+            echo "Usage: install_av_remote.sh -s ****_Server_IP -v ****_Server_Version,eg.19.4.0.7"
             exit
             ;;
         :)
